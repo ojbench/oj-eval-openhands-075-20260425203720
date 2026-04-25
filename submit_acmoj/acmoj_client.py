@@ -46,7 +46,7 @@ class ACMOJClient:
 
     def _make_request(self, method: str, endpoint: str, data: Dict[str, Any] = None, 
                      params: Dict[str, Any] = None) -> Optional[Dict]:
-        url = f"{self.api_base}{endpoint}"
+        url = f"{self.api_base.rstrip('/')}{endpoint}"
         try:
             if method.upper() == "GET":
                 response = requests.get(url, headers=self.headers, params=params, timeout=10, proxies={"https": None, "http": None})
